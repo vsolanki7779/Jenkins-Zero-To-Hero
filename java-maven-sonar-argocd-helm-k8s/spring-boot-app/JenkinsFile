@@ -6,13 +6,15 @@ pipeline {
     }
   }
   stages {
-    stage('Checkout') {
-      steps {
-        checkout scm
-        //sh 'echo passed'
-       // git branch: 'main', url: 'https://github.com/vsolanki7779/Jenkins-Zero-To-Hero.git'
-      }
-    }
+      stage('Checkout') {
+          steps {
+            git branch: 'main',
+            url: 'https://github.com/vsolanki7779/Jenkins-Zero-To-Hero.git',
+            credentialsId: 'github',
+            gitTool: 'Default'   // 👈 matches the name you set in Jenkins
+  }
+}
+
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
